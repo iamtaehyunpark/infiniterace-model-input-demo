@@ -1,0 +1,1602 @@
+[
+  {
+    "id": "node_000",
+    "mapillary_id": "1096900085639294",
+    "lat": 43.0742749,
+    "lon": -89.3771937,
+    "image": "node_000.jpg",
+    "compass_angle": 221.9122255472
+  },
+  {
+    "id": "node_001",
+    "mapillary_id": "1639013253505188",
+    "lat": 43.074835545536,
+    "lon": -89.376718179911,
+    "image": "node_001.jpg",
+    "compass_angle": 219.08294648019
+  },
+  {
+    "id": "node_002",
+    "mapillary_id": "1015043966875624",
+    "lat": 43.074540306701,
+    "lon": -89.377051772971,
+    "image": "node_002.jpg",
+    "compass_angle": 219.9137284274
+  },
+  {
+    "id": "node_003",
+    "mapillary_id": "1736836933602017",
+    "lat": 43.0744362,
+    "lon": -89.3770156,
+    "image": "node_003.jpg",
+    "compass_angle": 216.73264254625
+  },
+  {
+    "id": "node_004",
+    "mapillary_id": "1841113376406399",
+    "lat": 43.074768032879,
+    "lon": -89.37679263,
+    "image": "node_004.jpg",
+    "compass_angle": 219.22391655654
+  },
+  {
+    "id": "node_005",
+    "mapillary_id": "1569239087595471",
+    "lat": 43.0745095,
+    "lon": -89.3768207,
+    "image": "node_005.jpg",
+    "compass_angle": 125.96703748131
+  },
+  {
+    "id": "node_006",
+    "mapillary_id": "1226742809231853",
+    "lat": 43.0747059,
+    "lon": -89.3767408,
+    "image": "node_006.jpg",
+    "compass_angle": 219.14736674077
+  },
+  {
+    "id": "node_007",
+    "mapillary_id": "1563927711443467",
+    "lat": 43.0742711,
+    "lon": -89.3770531,
+    "image": "node_007.jpg",
+    "compass_angle": 127.20445514103
+  },
+  {
+    "id": "node_008",
+    "mapillary_id": "1450997775795470",
+    "lat": 43.074472574013,
+    "lon": -89.377130628146,
+    "image": "node_008.jpg",
+    "compass_angle": 220.41820124347
+  },
+  {
+    "id": "node_009",
+    "mapillary_id": "1211268341054092",
+    "lat": 43.0744926,
+    "lon": -89.3768248,
+    "image": "node_009.jpg",
+    "compass_angle": 136.38028293978
+  },
+  {
+    "id": "node_010",
+    "mapillary_id": "23951877744433124",
+    "lat": 43.0747296,
+    "lon": -89.376887,
+    "image": "node_010.jpg",
+    "compass_angle": 38.770974702128
+  },
+  {
+    "id": "node_011",
+    "mapillary_id": "3097941730335891",
+    "lat": 43.074723171035,
+    "lon": -89.376843368354,
+    "image": "node_011.jpg",
+    "compass_angle": 219.21789440525
+  },
+  {
+    "id": "node_012",
+    "mapillary_id": "288243427553421",
+    "lat": 43.074404061802,
+    "lon": -89.377209394564,
+    "image": "node_012.jpg",
+    "compass_angle": 220.82832736893
+  },
+  {
+    "id": "node_013",
+    "mapillary_id": "2887488598107956",
+    "lat": 43.0746004,
+    "lon": -89.3767097,
+    "image": "node_013.jpg",
+    "compass_angle": 131.45544488729
+  },
+  {
+    "id": "node_014",
+    "mapillary_id": "1145757843120917",
+    "lat": 43.076724559666,
+    "lon": -89.373729849962,
+    "image": "node_014.jpg",
+    "compass_angle": 225.50221096845
+  },
+  {
+    "id": "node_015",
+    "mapillary_id": "372832852416910",
+    "lat": 43.074495225763,
+    "lon": -89.377104322413,
+    "image": "node_015.jpg",
+    "compass_angle": 220.2496486916
+  },
+  {
+    "id": "node_016",
+    "mapillary_id": "723715856322883",
+    "lat": 43.074655281061,
+    "lon": -89.37692105303,
+    "image": "node_016.jpg",
+    "compass_angle": 219.45591419948
+  },
+  {
+    "id": "node_017",
+    "mapillary_id": "771107431418336",
+    "lat": 43.074813047619,
+    "lon": -89.376742585714,
+    "image": "node_017.jpg",
+    "compass_angle": 219.21064204446
+  },
+  {
+    "id": "node_018",
+    "mapillary_id": "725112809999058",
+    "lat": 43.074292,
+    "lon": -89.3770482,
+    "image": "node_018.jpg",
+    "compass_angle": 127.38106904026
+  },
+  {
+    "id": "node_019",
+    "mapillary_id": "435955755476045",
+    "lat": 43.074700260909,
+    "lon": -89.376869367273,
+    "image": "node_019.jpg",
+    "compass_angle": 219.28438461242
+  },
+  {
+    "id": "node_020",
+    "mapillary_id": "845284725125821",
+    "lat": 43.0746205,
+    "lon": -89.3766948,
+    "image": "node_020.jpg",
+    "compass_angle": 122.78166372239
+  },
+  {
+    "id": "node_021",
+    "mapillary_id": "3273573782947822",
+    "lat": 43.074449987348,
+    "lon": -89.377156888106,
+    "image": "node_021.jpg",
+    "compass_angle": 220.60006946026
+  },
+  {
+    "id": "node_022",
+    "mapillary_id": "7840203022659473",
+    "lat": 43.07467754933,
+    "lon": -89.376896242857,
+    "image": "node_022.jpg",
+    "compass_angle": 219.40268452333
+  },
+  {
+    "id": "node_023",
+    "mapillary_id": "1477151256231205",
+    "lat": 43.076662899091,
+    "lon": -89.373822823485,
+    "image": "node_023.jpg",
+    "compass_angle": 226.53355673829
+  },
+  {
+    "id": "node_024",
+    "mapillary_id": "959319962254028",
+    "lat": 43.076743753165,
+    "lon": -89.373697264929,
+    "image": "node_024.jpg",
+    "compass_angle": 225.44938827158
+  },
+  {
+    "id": "node_025",
+    "mapillary_id": "416275017703512",
+    "lat": 43.074609409242,
+    "lon": -89.376973983561,
+    "image": "node_025.jpg",
+    "compass_angle": 219.61011675791
+  },
+  {
+    "id": "node_026",
+    "mapillary_id": "2028428181023440",
+    "lat": 43.0767716,
+    "lon": -89.3736808,
+    "image": "node_026.jpg",
+    "compass_angle": 44.628408510158
+  },
+  {
+    "id": "node_027",
+    "mapillary_id": "24011536368455605",
+    "lat": 43.0767372,
+    "lon": -89.373677,
+    "image": "node_027.jpg",
+    "compass_angle": 219.8729679924
+  },
+  {
+    "id": "node_028",
+    "mapillary_id": "1177372710993831",
+    "lat": 43.0743812,
+    "lon": -89.3769357,
+    "image": "node_028.jpg",
+    "compass_angle": 136.9974797903
+  },
+  {
+    "id": "node_029",
+    "mapillary_id": "1345525426143391",
+    "lat": 43.07463194825,
+    "lon": -89.376947978407,
+    "image": "node_029.jpg",
+    "compass_angle": 219.52688700977
+  },
+  {
+    "id": "node_030",
+    "mapillary_id": "396417003214542",
+    "lat": 43.074586146726,
+    "lon": -89.376998893155,
+    "image": "node_030.jpg",
+    "compass_angle": 219.70754678953
+  },
+  {
+    "id": "node_031",
+    "mapillary_id": "350260671352892",
+    "lat": 43.074563113105,
+    "lon": -89.377025993373,
+    "image": "node_031.jpg",
+    "compass_angle": 219.8049388868
+  },
+  {
+    "id": "node_032",
+    "mapillary_id": "377229704776289",
+    "lat": 43.074745420909,
+    "lon": -89.376817808182,
+    "image": "node_032.jpg",
+    "compass_angle": 219.20392438505
+  },
+  {
+    "id": "node_033",
+    "mapillary_id": "418522780796310",
+    "lat": 43.076762701564,
+    "lon": -89.373670440506,
+    "image": "node_033.jpg",
+    "compass_angle": 225.38516875268
+  },
+  {
+    "id": "node_034",
+    "mapillary_id": "1054332699769571",
+    "lat": 43.0746591,
+    "lon": -89.3767824,
+    "image": "node_034.jpg",
+    "compass_angle": 216.15667055968
+  },
+  {
+    "id": "node_035",
+    "mapillary_id": "451888707190435",
+    "lat": 43.074427248622,
+    "lon": -89.377183246761,
+    "image": "node_035.jpg",
+    "compass_angle": 220.71226341938
+  },
+  {
+    "id": "node_036",
+    "mapillary_id": "844220051522996",
+    "lat": 43.074399,
+    "lon": -89.3769368,
+    "image": "node_036.jpg",
+    "compass_angle": 117.92801353816
+  },
+  {
+    "id": "node_037",
+    "mapillary_id": "755296853723112",
+    "lat": 43.0744976,
+    "lon": -89.3769577,
+    "image": "node_037.jpg",
+    "compass_angle": 219.60432903224
+  },
+  {
+    "id": "node_038",
+    "mapillary_id": "1894248014687026",
+    "lat": 43.0745102,
+    "lon": -89.377134,
+    "image": "node_038.jpg",
+    "compass_angle": 39.05218130051
+  },
+  {
+    "id": "node_039",
+    "mapillary_id": "438861988501087",
+    "lat": 43.076683223604,
+    "lon": -89.373791140879,
+    "image": "node_039.jpg",
+    "compass_angle": 225.88411984966
+  },
+  {
+    "id": "node_040",
+    "mapillary_id": "2224300211242014",
+    "lat": 43.07451769697,
+    "lon": -89.377077857576,
+    "image": "node_040.jpg",
+    "compass_angle": 220.08780259554
+  },
+  {
+    "id": "node_041",
+    "mapillary_id": "437781378804187",
+    "lat": 43.076703824125,
+    "lon": -89.373760586225,
+    "image": "node_041.jpg",
+    "compass_angle": 225.62859413239
+  },
+  {
+    "id": "node_042",
+    "mapillary_id": "8026469777381340",
+    "lat": 43.07479064557,
+    "lon": -89.37676753038,
+    "image": "node_042.jpg",
+    "compass_angle": 219.25135637883
+  },
+  {
+    "id": "node_043",
+    "mapillary_id": "776978518227932",
+    "lat": 43.0785022,
+    "lon": -89.3752768,
+    "image": "node_043.jpg",
+    "compass_angle": 129.42947510737
+  },
+  {
+    "id": "node_044",
+    "mapillary_id": "757843313350375",
+    "lat": 43.0794616,
+    "lon": -89.3765424,
+    "image": "node_044.jpg",
+    "compass_angle": 316.267
+  },
+  {
+    "id": "node_045",
+    "mapillary_id": "1478983396347526",
+    "lat": 43.075262106137,
+    "lon": -89.376260300787,
+    "image": "node_045.jpg",
+    "compass_angle": 215.70097796784
+  },
+  {
+    "id": "node_046",
+    "mapillary_id": "1555941595538133",
+    "lat": 43.0785032,
+    "lon": -89.3752162,
+    "image": "node_046.jpg",
+    "compass_angle": 34.159938328587
+  },
+  {
+    "id": "node_047",
+    "mapillary_id": "1790235654803558",
+    "lat": 43.075401077684,
+    "lon": -89.376125349153,
+    "image": "node_047.jpg",
+    "compass_angle": 214.13337663876
+  },
+  {
+    "id": "node_048",
+    "mapillary_id": "1571623233687008",
+    "lat": 43.074991992054,
+    "lon": -89.376546282927,
+    "image": "node_048.jpg",
+    "compass_angle": 218.25772213693
+  },
+  {
+    "id": "node_049",
+    "mapillary_id": "396052123230089",
+    "lat": 43.07513733306,
+    "lon": -89.376389150931,
+    "image": "node_049.jpg",
+    "compass_angle": 217.04340474132
+  },
+  {
+    "id": "node_050",
+    "mapillary_id": "2176289456125488",
+    "lat": 43.0750918,
+    "lon": -89.3762959,
+    "image": "node_050.jpg",
+    "compass_angle": 222.53100631544
+  },
+  {
+    "id": "node_051",
+    "mapillary_id": "397225473198768",
+    "lat": 43.075329171676,
+    "lon": -89.376194098741,
+    "image": "node_051.jpg",
+    "compass_angle": 215.04983042427
+  },
+  {
+    "id": "node_052",
+    "mapillary_id": "1158004286435419",
+    "lat": 43.078667,
+    "lon": -89.3754278,
+    "image": "node_052.jpg",
+    "compass_angle": 37.394569272261
+  },
+  {
+    "id": "node_053",
+    "mapillary_id": "1177482147682443",
+    "lat": 43.078586,
+    "lon": -89.3753271,
+    "image": "node_053.jpg",
+    "compass_angle": 44.244782228251
+  },
+  {
+    "id": "node_054",
+    "mapillary_id": "747279004054354",
+    "lat": 43.075014428167,
+    "lon": -89.376522260031,
+    "image": "node_054.jpg",
+    "compass_angle": 218.20217762032
+  },
+  {
+    "id": "node_055",
+    "mapillary_id": "698657973161165",
+    "lat": 43.0751813,
+    "lon": -89.3763975,
+    "image": "node_055.jpg",
+    "compass_angle": 31.385423594563
+  },
+  {
+    "id": "node_056",
+    "mapillary_id": "1902505406871360",
+    "lat": 43.075377441808,
+    "lon": -89.376147699718,
+    "image": "node_056.jpg",
+    "compass_angle": 214.47115195242
+  },
+  {
+    "id": "node_057",
+    "mapillary_id": "1081772403910782",
+    "lat": 43.0772046,
+    "lon": -89.3769149,
+    "image": "node_057.jpg",
+    "compass_angle": 134.78824530916
+  },
+  {
+    "id": "node_058",
+    "mapillary_id": "345095758547833",
+    "lat": 43.075112254091,
+    "lon": -89.376416266818,
+    "image": "node_058.jpg",
+    "compass_angle": 217.35246892451
+  },
+  {
+    "id": "node_059",
+    "mapillary_id": "1759397888049347",
+    "lat": 43.0749306,
+    "lon": -89.3763222,
+    "image": "node_059.jpg",
+    "compass_angle": 131.35313151058
+  },
+  {
+    "id": "node_060",
+    "mapillary_id": "1145788869891297",
+    "lat": 43.075306918411,
+    "lon": -89.376216060818,
+    "image": "node_060.jpg",
+    "compass_angle": 215.23698573811
+  },
+  {
+    "id": "node_061",
+    "mapillary_id": "1499883977574253",
+    "lat": 43.075036674535,
+    "lon": -89.376498781311,
+    "image": "node_061.jpg",
+    "compass_angle": 218.12805467456
+  },
+  {
+    "id": "node_062",
+    "mapillary_id": "763717936103117",
+    "lat": 43.0793399,
+    "lon": -89.3763846,
+    "image": "node_062.jpg",
+    "compass_angle": 145.02494548374
+  },
+  {
+    "id": "node_063",
+    "mapillary_id": "756040910251467",
+    "lat": 43.0750423,
+    "lon": -89.376342,
+    "image": "node_063.jpg",
+    "compass_angle": 218.8782960396
+  },
+  {
+    "id": "node_064",
+    "mapillary_id": "1599745334716210",
+    "lat": 43.0751296,
+    "lon": -89.3760788,
+    "image": "node_064.jpg",
+    "compass_angle": 120.68629416755
+  },
+  {
+    "id": "node_065",
+    "mapillary_id": "433395555864838",
+    "lat": 43.075163083395,
+    "lon": -89.376362336485,
+    "image": "node_065.jpg",
+    "compass_angle": 216.76116514046
+  },
+  {
+    "id": "node_066",
+    "mapillary_id": "711907784473493",
+    "lat": 43.075450214423,
+    "lon": -89.37608053109,
+    "image": "node_066.jpg",
+    "compass_angle": 212.83435256003
+  },
+  {
+    "id": "node_067",
+    "mapillary_id": "3371114603180786",
+    "lat": 43.075086951818,
+    "lon": -89.376443609091,
+    "image": "node_067.jpg",
+    "compass_angle": 217.61749340641
+  },
+  {
+    "id": "node_068",
+    "mapillary_id": "419949977432381",
+    "lat": 43.074946470024,
+    "lon": -89.376595753659,
+    "image": "node_068.jpg",
+    "compass_angle": 218.35096522077
+  },
+  {
+    "id": "node_069",
+    "mapillary_id": "5699818153475577",
+    "lat": 43.075061708333,
+    "lon": -89.376470894494,
+    "image": "node_069.jpg",
+    "compass_angle": 217.91692281052
+  },
+  {
+    "id": "node_070",
+    "mapillary_id": "714528144540994",
+    "lat": 43.0752578,
+    "lon": -89.3760916,
+    "image": "node_070.jpg",
+    "compass_angle": 222.8160271606
+  },
+  {
+    "id": "node_071",
+    "mapillary_id": "746534644587399",
+    "lat": 43.078617,
+    "lon": -89.3754288,
+    "image": "node_071.jpg",
+    "compass_angle": 129.2055769053
+  },
+  {
+    "id": "node_072",
+    "mapillary_id": "1130463891325098",
+    "lat": 43.075188860227,
+    "lon": -89.376336249242,
+    "image": "node_072.jpg",
+    "compass_angle": 216.45379462223
+  },
+  {
+    "id": "node_073",
+    "mapillary_id": "1547251326619462",
+    "lat": 43.0750296,
+    "lon": -89.3762011,
+    "image": "node_073.jpg",
+    "compass_angle": 119.93797160354
+  },
+  {
+    "id": "node_074",
+    "mapillary_id": "1334142208332345",
+    "lat": 43.0770812,
+    "lon": -89.3767498,
+    "image": "node_074.jpg",
+    "compass_angle": 135.09207812368
+  },
+  {
+    "id": "node_075",
+    "mapillary_id": "1356637269182343",
+    "lat": 43.0750329,
+    "lon": -89.3762095,
+    "image": "node_075.jpg",
+    "compass_angle": 138.76344086143
+  },
+  {
+    "id": "node_076",
+    "mapillary_id": "1245060046994427",
+    "lat": 43.0748586,
+    "lon": -89.3765641,
+    "image": "node_076.jpg",
+    "compass_angle": 216.93192630019
+  },
+  {
+    "id": "node_077",
+    "mapillary_id": "1872313549876313",
+    "lat": 43.074923360504,
+    "lon": -89.376620480488,
+    "image": "node_077.jpg",
+    "compass_angle": 218.43209928774
+  },
+  {
+    "id": "node_078",
+    "mapillary_id": "1888423024918911",
+    "lat": 43.075284652606,
+    "lon": -89.376237635204,
+    "image": "node_078.jpg",
+    "compass_angle": 215.48244988215
+  },
+  {
+    "id": "node_079",
+    "mapillary_id": "3639168319640187",
+    "lat": 43.075239953816,
+    "lon": -89.376283046184,
+    "image": "node_079.jpg",
+    "compass_angle": 215.93477704839
+  },
+  {
+    "id": "node_080",
+    "mapillary_id": "437070118812638",
+    "lat": 43.074969323718,
+    "lon": -89.376570998317,
+    "image": "node_080.jpg",
+    "compass_angle": 218.29580846271
+  },
+  {
+    "id": "node_081",
+    "mapillary_id": "3973023072914794",
+    "lat": 43.0792152,
+    "lon": -89.3762225,
+    "image": "node_081.jpg",
+    "compass_angle": 147.21939531476
+  },
+  {
+    "id": "node_082",
+    "mapillary_id": "1335514485019832",
+    "lat": 43.0749285,
+    "lon": -89.3763373,
+    "image": "node_082.jpg",
+    "compass_angle": 132.92020827067
+  },
+  {
+    "id": "node_083",
+    "mapillary_id": "708684251970603",
+    "lat": 43.075202,
+    "lon": -89.3761287,
+    "image": "node_083.jpg",
+    "compass_angle": 221.74116964241
+  },
+  {
+    "id": "node_084",
+    "mapillary_id": "660805119492396",
+    "lat": 43.075353681356,
+    "lon": -89.376170341525,
+    "image": "node_084.jpg",
+    "compass_angle": 214.7682066966
+  },
+  {
+    "id": "node_085",
+    "mapillary_id": "665527526539322",
+    "lat": 43.0753959,
+    "lon": -89.3761871,
+    "image": "node_085.jpg",
+    "compass_angle": 28.853930508938
+  },
+  {
+    "id": "node_086",
+    "mapillary_id": "1095561321668023",
+    "lat": 43.075214452727,
+    "lon": -89.376309966818,
+    "image": "node_086.jpg",
+    "compass_angle": 216.21501104685
+  },
+  {
+    "id": "node_087",
+    "mapillary_id": "604000932354351",
+    "lat": 43.0749107,
+    "lon": -89.3765121,
+    "image": "node_087.jpg",
+    "compass_angle": 220.30914368201
+  },
+  {
+    "id": "node_088",
+    "mapillary_id": "853735470933779",
+    "lat": 43.075142,
+    "lon": -89.3760765,
+    "image": "node_088.jpg",
+    "compass_angle": 131.89329052965
+  },
+  {
+    "id": "node_089",
+    "mapillary_id": "1123556392184029",
+    "lat": 43.075712942153,
+    "lon": -89.381592989538,
+    "image": "node_089.jpg",
+    "compass_angle": 315.74437182738
+  },
+  {
+    "id": "node_090",
+    "mapillary_id": "1298301114842172",
+    "lat": 43.0758404,
+    "lon": -89.3817056,
+    "image": "node_090.jpg",
+    "compass_angle": 54.259782086881
+  },
+  {
+    "id": "node_091",
+    "mapillary_id": "1465019498084929",
+    "lat": 43.0757823,
+    "lon": -89.3816283,
+    "image": "node_091.jpg",
+    "compass_angle": 53.771358820998
+  },
+  {
+    "id": "node_092",
+    "mapillary_id": "1145260250474720",
+    "lat": 43.0758473,
+    "lon": -89.3817375,
+    "image": "node_092.jpg",
+    "compass_angle": 354.58684011254
+  },
+  {
+    "id": "node_093",
+    "mapillary_id": "950243076554181",
+    "lat": 43.075424557627,
+    "lon": -89.376103922034,
+    "image": "node_093.jpg",
+    "compass_angle": 213.50615851451
+  },
+  {
+    "id": "node_094",
+    "mapillary_id": "2975848285933811",
+    "lat": 43.0742001,
+    "lon": -89.3771457,
+    "image": "node_094.jpg",
+    "compass_angle": 140.69953960115
+  },
+  {
+    "id": "node_095",
+    "mapillary_id": "283163038170104",
+    "lat": 43.075851639166,
+    "lon": -89.381774638645,
+    "image": "node_095.jpg",
+    "compass_angle": 315.6079448761
+  },
+  {
+    "id": "node_096",
+    "mapillary_id": "25665356849732978",
+    "lat": 43.0756412,
+    "lon": -89.3814243,
+    "image": "node_096.jpg",
+    "compass_angle": 58.488874105516
+  },
+  {
+    "id": "node_097",
+    "mapillary_id": "2885952788210075",
+    "lat": 43.075866339936,
+    "lon": -89.38180566656,
+    "image": "node_097.jpg",
+    "compass_angle": 315.54816010688
+  },
+  {
+    "id": "node_098",
+    "mapillary_id": "1056304763188165",
+    "lat": 43.0759123,
+    "lon": -89.3818107,
+    "image": "node_098.jpg",
+    "compass_angle": 44.328978465332
+  },
+  {
+    "id": "node_099",
+    "mapillary_id": "2435398196880496",
+    "lat": 43.0758655,
+    "lon": -89.3817704,
+    "image": "node_099.jpg",
+    "compass_angle": 48.740432437688
+  },
+  {
+    "id": "node_100",
+    "mapillary_id": "1099545654644000",
+    "lat": 43.075613911408,
+    "lon": -89.381461005193,
+    "image": "node_100.jpg",
+    "compass_angle": 315.24564114949
+  },
+  {
+    "id": "node_101",
+    "mapillary_id": "3897459050552768",
+    "lat": 43.0759169,
+    "lon": -89.3818174,
+    "image": "node_101.jpg",
+    "compass_angle": 54.698842980942
+  },
+  {
+    "id": "node_102",
+    "mapillary_id": "842921761467610",
+    "lat": 43.0747214,
+    "lon": -89.3765712,
+    "image": "node_102.jpg",
+    "compass_angle": 135.90458059243
+  },
+  {
+    "id": "node_103",
+    "mapillary_id": "1868729423718707",
+    "lat": 43.0759172,
+    "lon": -89.3818155,
+    "image": "node_103.jpg",
+    "compass_angle": 53.73201692323
+  },
+  {
+    "id": "node_104",
+    "mapillary_id": "1332449708607424",
+    "lat": 43.0757236,
+    "lon": -89.3815467,
+    "image": "node_104.jpg",
+    "compass_angle": 56.343362019626
+  },
+  {
+    "id": "node_105",
+    "mapillary_id": "394179030172196",
+    "lat": 43.075693486895,
+    "lon": -89.381565481162,
+    "image": "node_105.jpg",
+    "compass_angle": 315.68704730147
+  },
+  {
+    "id": "node_106",
+    "mapillary_id": "1727594584400658",
+    "lat": 43.075593392689,
+    "lon": -89.381432974921,
+    "image": "node_106.jpg",
+    "compass_angle": 315.1141355305
+  },
+  {
+    "id": "node_107",
+    "mapillary_id": "875739678214997",
+    "lat": 43.07416,
+    "lon": -89.377174,
+    "image": "node_107.jpg",
+    "compass_angle": 92.182335576083
+  },
+  {
+    "id": "node_108",
+    "mapillary_id": "1288119516313814",
+    "lat": 43.0748212,
+    "lon": -89.3764644,
+    "image": "node_108.jpg",
+    "compass_angle": 120.82318016173
+  },
+  {
+    "id": "node_109",
+    "mapillary_id": "625726443807987",
+    "lat": 43.0742131,
+    "lon": -89.3788914,
+    "image": "node_109.jpg",
+    "compass_angle": 130.98734154419
+  },
+  {
+    "id": "node_110",
+    "mapillary_id": "1224248076178477",
+    "lat": 43.0747099,
+    "lon": -89.3765892,
+    "image": "node_110.jpg",
+    "compass_angle": 129.94476526963
+  },
+  {
+    "id": "node_111",
+    "mapillary_id": "1487580565650862",
+    "lat": 43.0741393,
+    "lon": -89.3789815,
+    "image": "node_111.jpg",
+    "compass_angle": 127.63099722881
+  },
+  {
+    "id": "node_112",
+    "mapillary_id": "1851090892432225",
+    "lat": 43.0758838,
+    "lon": -89.3817956,
+    "image": "node_112.jpg",
+    "compass_angle": 53.277982326319
+  },
+  {
+    "id": "node_113",
+    "mapillary_id": "2030740831035652",
+    "lat": 43.0758978,
+    "lon": -89.3818137,
+    "image": "node_113.jpg",
+    "compass_angle": 40.593881214239
+  },
+  {
+    "id": "node_114",
+    "mapillary_id": "2181163308883236",
+    "lat": 43.075654163381,
+    "lon": -89.381512752919,
+    "image": "node_114.jpg",
+    "compass_angle": 315.54734130062
+  },
+  {
+    "id": "node_115",
+    "mapillary_id": "3720240931523110",
+    "lat": 43.07581188831,
+    "lon": -89.381723399255,
+    "image": "node_115.jpg",
+    "compass_angle": 315.24601806338
+  },
+  {
+    "id": "node_116",
+    "mapillary_id": "1331324048680647",
+    "lat": 43.0759157,
+    "lon": -89.3818131,
+    "image": "node_116.jpg",
+    "compass_angle": 49.483728322159
+  },
+  {
+    "id": "node_117",
+    "mapillary_id": "1420322586177005",
+    "lat": 43.0748263,
+    "lon": -89.3764498,
+    "image": "node_117.jpg",
+    "compass_angle": 144.8609792406
+  },
+  {
+    "id": "node_118",
+    "mapillary_id": "1971529023667477",
+    "lat": 43.0759098,
+    "lon": -89.3818094,
+    "image": "node_118.jpg",
+    "compass_angle": 41.471504680273
+  },
+  {
+    "id": "node_119",
+    "mapillary_id": "4048441115369509",
+    "lat": 43.075668,
+    "lon": -89.3814641,
+    "image": "node_119.jpg",
+    "compass_angle": 50.645180670646
+  },
+  {
+    "id": "node_120",
+    "mapillary_id": "611389331967761",
+    "lat": 43.0758927,
+    "lon": -89.3818117,
+    "image": "node_120.jpg",
+    "compass_angle": 51.684084345644
+  },
+  {
+    "id": "node_121",
+    "mapillary_id": "674994198999074",
+    "lat": 43.0759019,
+    "lon": -89.3818131,
+    "image": "node_121.jpg",
+    "compass_angle": 40.33239390473
+  },
+  {
+    "id": "node_122",
+    "mapillary_id": "799899211646631",
+    "lat": 43.075551529583,
+    "lon": -89.381379661684,
+    "image": "node_122.jpg",
+    "compass_angle": 314.87817366643
+  },
+  {
+    "id": "node_123",
+    "mapillary_id": "816004694353862",
+    "lat": 43.075906,
+    "lon": -89.3818109,
+    "image": "node_123.jpg",
+    "compass_angle": 40.460219069443
+  },
+  {
+    "id": "node_124",
+    "mapillary_id": "889152269651231",
+    "lat": 43.075791533359,
+    "lon": -89.381697541698,
+    "image": "node_124.jpg",
+    "compass_angle": 315.29773231665
+  },
+  {
+    "id": "node_125",
+    "mapillary_id": "794878492100015",
+    "lat": 43.075771176318,
+    "lon": -89.381672678127,
+    "image": "node_125.jpg",
+    "compass_angle": 315.59598179312
+  },
+  {
+    "id": "node_126",
+    "mapillary_id": "1242480923694989",
+    "lat": 43.0788599,
+    "lon": -89.375753,
+    "image": "node_126.jpg",
+    "compass_angle": 131.56227057826
+  },
+  {
+    "id": "node_127",
+    "mapillary_id": "1122740176241352",
+    "lat": 43.0749752,
+    "lon": -89.3777862,
+    "image": "node_127.jpg",
+    "compass_angle": 133.54089401301
+  },
+  {
+    "id": "node_128",
+    "mapillary_id": "1341086334336029",
+    "lat": 43.0750421,
+    "lon": -89.3776635,
+    "image": "node_128.jpg",
+    "compass_angle": 132.8620279317
+  },
+  {
+    "id": "node_129",
+    "mapillary_id": "749609114778282",
+    "lat": 43.0758929,
+    "lon": -89.381777,
+    "image": "node_129.jpg",
+    "compass_angle": 60.692804406065
+  },
+  {
+    "id": "node_130",
+    "mapillary_id": "808479141785112",
+    "lat": 43.0758028,
+    "lon": -89.3816564,
+    "image": "node_130.jpg",
+    "compass_angle": 39.916131578611
+  },
+  {
+    "id": "node_131",
+    "mapillary_id": "457290196653925",
+    "lat": 43.075634069099,
+    "lon": -89.381487180789,
+    "image": "node_131.jpg",
+    "compass_angle": 315.38842095716
+  },
+  {
+    "id": "node_132",
+    "mapillary_id": "698784772669465",
+    "lat": 43.0758288,
+    "lon": -89.3816997,
+    "image": "node_132.jpg",
+    "compass_angle": 24.560179134858
+  },
+  {
+    "id": "node_133",
+    "mapillary_id": "4351569171755729",
+    "lat": 43.0756109,
+    "lon": -89.3813855,
+    "image": "node_133.jpg",
+    "compass_angle": 53.301638895234
+  },
+  {
+    "id": "node_134",
+    "mapillary_id": "759566943763959",
+    "lat": 43.0757285,
+    "lon": -89.3815434,
+    "image": "node_134.jpg",
+    "compass_angle": 355.14072501698
+  },
+  {
+    "id": "node_135",
+    "mapillary_id": "1884541018386287",
+    "lat": 43.075277136646,
+    "lon": -89.377453935719,
+    "image": "node_135.jpg",
+    "compass_angle": 234.49097231386
+  },
+  {
+    "id": "node_136",
+    "mapillary_id": "2607626019537636",
+    "lat": 43.075251914297,
+    "lon": -89.377504590313,
+    "image": "node_136.jpg",
+    "compass_angle": 235.80086070617
+  },
+  {
+    "id": "node_137",
+    "mapillary_id": "1886487768584618",
+    "lat": 43.0788988,
+    "lon": -89.375806,
+    "image": "node_137.jpg",
+    "compass_angle": 131.31109256614
+  },
+  {
+    "id": "node_138",
+    "mapillary_id": "733184188986488",
+    "lat": 43.075572259454,
+    "lon": -89.381406135011,
+    "image": "node_138.jpg",
+    "compass_angle": 314.95464381616
+  },
+  {
+    "id": "node_139",
+    "mapillary_id": "1762010877841608",
+    "lat": 43.078947,
+    "lon": -89.375711,
+    "image": "node_139.jpg",
+    "compass_angle": 49.902131568511
+  },
+  {
+    "id": "node_140",
+    "mapillary_id": "1392906129176794",
+    "lat": 43.0787427,
+    "lon": -89.3755152,
+    "image": "node_140.jpg",
+    "compass_angle": 46.528677366538
+  },
+  {
+    "id": "node_141",
+    "mapillary_id": "1365339597184201",
+    "lat": 43.075303927314,
+    "lon": -89.377404668195,
+    "image": "node_141.jpg",
+    "compass_angle": 231.65897233837
+  },
+  {
+    "id": "node_142",
+    "mapillary_id": "287693659676671",
+    "lat": 43.075148613732,
+    "lon": -89.377705728684,
+    "image": "node_142.jpg",
+    "compass_angle": 231.76260584098
+  },
+  {
+    "id": "node_143",
+    "mapillary_id": "1405511068260919",
+    "lat": 43.0750981,
+    "lon": -89.3776802,
+    "image": "node_143.jpg",
+    "compass_angle": 132.15593360262
+  },
+  {
+    "id": "node_144",
+    "mapillary_id": "423289537060152",
+    "lat": 43.075732457036,
+    "lon": -89.381620882427,
+    "image": "node_144.jpg",
+    "compass_angle": 315.86031357785
+  },
+  {
+    "id": "node_145",
+    "mapillary_id": "746034908459445",
+    "lat": 43.0756874,
+    "lon": -89.3814839,
+    "image": "node_145.jpg",
+    "compass_angle": 52.358116181417
+  },
+  {
+    "id": "node_146",
+    "mapillary_id": "1776339839212896",
+    "lat": 43.075175840347,
+    "lon": -89.377656846958,
+    "image": "node_146.jpg",
+    "compass_angle": 233.41719653096
+  },
+  {
+    "id": "node_147",
+    "mapillary_id": "722103714253224",
+    "lat": 43.0788124,
+    "lon": -89.3755989,
+    "image": "node_147.jpg",
+    "compass_angle": 41.121736328134
+  },
+  {
+    "id": "node_148",
+    "mapillary_id": "2056688478483173",
+    "lat": 43.0751641,
+    "lon": -89.3774245,
+    "image": "node_148.jpg",
+    "compass_angle": 139.56965567953
+  },
+  {
+    "id": "node_149",
+    "mapillary_id": "26091919193842749",
+    "lat": 43.0752549,
+    "lon": -89.3773486,
+    "image": "node_149.jpg",
+    "compass_angle": 146.09515271849
+  },
+  {
+    "id": "node_150",
+    "mapillary_id": "2004772973398105",
+    "lat": 43.0790279,
+    "lon": -89.3756674,
+    "image": "node_150.jpg",
+    "compass_angle": 112.3041682561
+  },
+  {
+    "id": "node_151",
+    "mapillary_id": "970923844428863",
+    "lat": 43.075674425967,
+    "lon": -89.381539369643,
+    "image": "node_151.jpg",
+    "compass_angle": 315.65802137121
+  },
+  {
+    "id": "node_152",
+    "mapillary_id": "2562800120740390",
+    "lat": 43.0789791,
+    "lon": -89.3759138,
+    "image": "node_152.jpg",
+    "compass_angle": 131.19588204725
+  },
+  {
+    "id": "node_153",
+    "mapillary_id": "1142273152904998",
+    "lat": 43.075423511003,
+    "lon": -89.377221138656,
+    "image": "node_153.jpg",
+    "compass_angle": 225.77753729709
+  },
+  {
+    "id": "node_154",
+    "mapillary_id": "35591912177066467",
+    "lat": 43.0751801,
+    "lon": -89.377523,
+    "image": "node_154.jpg",
+    "compass_angle": 146.95466771323
+  },
+  {
+    "id": "node_155",
+    "mapillary_id": "2300332367065070",
+    "lat": 43.0752332,
+    "lon": -89.3773046,
+    "image": "node_155.jpg",
+    "compass_angle": 137.51043820724
+  },
+  {
+    "id": "node_156",
+    "mapillary_id": "7385396704887801",
+    "lat": 43.075751827381,
+    "lon": -89.381646934226,
+    "image": "node_156.jpg",
+    "compass_angle": 315.81930660508
+  },
+  {
+    "id": "node_157",
+    "mapillary_id": "628047693057423",
+    "lat": 43.0788417,
+    "lon": -89.375728,
+    "image": "node_157.jpg",
+    "compass_angle": 132.18104991204
+  },
+  {
+    "id": "node_158",
+    "mapillary_id": "662228480160750",
+    "lat": 43.0787234,
+    "lon": -89.3755694,
+    "image": "node_158.jpg",
+    "compass_angle": 131.77733334127
+  },
+  {
+    "id": "node_159",
+    "mapillary_id": "448802697587327",
+    "lat": 43.075832489278,
+    "lon": -89.381747483917,
+    "image": "node_159.jpg",
+    "compass_angle": 315.40452931371
+  },
+  {
+    "id": "node_160",
+    "mapillary_id": "665971912966570",
+    "lat": 43.0757671,
+    "lon": -89.3816043,
+    "image": "node_160.jpg",
+    "compass_angle": 54.875769635984
+  },
+  {
+    "id": "node_161",
+    "mapillary_id": "1100730088803423",
+    "lat": 43.0788748,
+    "lon": -89.3756716,
+    "image": "node_161.jpg",
+    "compass_angle": 6.7318654415527
+  },
+  {
+    "id": "node_162",
+    "mapillary_id": "774310952262700",
+    "lat": 43.0755917,
+    "lon": -89.3813608,
+    "image": "node_162.jpg",
+    "compass_angle": 52.762461112924
+  },
+  {
+    "id": "node_163",
+    "mapillary_id": "608375338552780",
+    "lat": 43.078849,
+    "lon": -89.3757385,
+    "image": "node_163.jpg",
+    "compass_angle": 131.69017663862
+  },
+  {
+    "id": "node_164",
+    "mapillary_id": "1443318643788928",
+    "lat": 43.0788049,
+    "lon": -89.3756772,
+    "image": "node_164.jpg",
+    "compass_angle": 132.29188939078
+  },
+  {
+    "id": "node_165",
+    "mapillary_id": "799427254336527",
+    "lat": 43.075332293015,
+    "lon": -89.377357209419,
+    "image": "node_165.jpg",
+    "compass_angle": 229.17682543766
+  },
+  {
+    "id": "node_166",
+    "mapillary_id": "936723730409176",
+    "lat": 43.075392471084,
+    "lon": -89.377265833136,
+    "image": "node_166.jpg",
+    "compass_angle": 226.44250933191
+  },
+  {
+    "id": "node_167",
+    "mapillary_id": "777687272933458",
+    "lat": 43.075092857946,
+    "lon": -89.377802090004,
+    "image": "node_167.jpg",
+    "compass_angle": 231.35413920229
+  },
+  {
+    "id": "node_168",
+    "mapillary_id": "1779662803439644",
+    "lat": 43.0763826,
+    "lon": -89.3815893,
+    "image": "node_168.jpg",
+    "compass_angle": 120.88888509418
+  },
+  {
+    "id": "node_169",
+    "mapillary_id": "2139422620186100",
+    "lat": 43.0762838,
+    "lon": -89.3817281,
+    "image": "node_169.jpg",
+    "compass_angle": 119.71873846126
+  },
+  {
+    "id": "node_170",
+    "mapillary_id": "764214764460017",
+    "lat": 43.076473928026,
+    "lon": -89.381539366381,
+    "image": "node_170.jpg",
+    "compass_angle": 44.813133039244
+  },
+  {
+    "id": "node_171",
+    "mapillary_id": "622011909199139",
+    "lat": 43.075201650876,
+    "lon": -89.377606499851,
+    "image": "node_171.jpg",
+    "compass_angle": 235.23683339666
+  },
+  {
+    "id": "node_172",
+    "mapillary_id": "226973989225779",
+    "lat": 43.075065643689,
+    "lon": -89.377850979949,
+    "image": "node_172.jpg",
+    "compass_angle": 232.13180852256
+  },
+  {
+    "id": "node_173",
+    "mapillary_id": "446372666459909",
+    "lat": 43.076286214116,
+    "lon": -89.381803836454,
+    "image": "node_173.jpg",
+    "compass_angle": 45.987505229483
+  },
+  {
+    "id": "node_174",
+    "mapillary_id": "1133686112220691",
+    "lat": 43.0749122,
+    "lon": -89.3816012,
+    "image": "node_174.jpg",
+    "compass_angle": 314.83885995655
+  },
+  {
+    "id": "node_175",
+    "mapillary_id": "1337176526655149",
+    "lat": 43.076442461492,
+    "lon": -89.381583214564,
+    "image": "node_175.jpg",
+    "compass_angle": 44.946069294294
+  },
+  {
+    "id": "node_176",
+    "mapillary_id": "815981185715973",
+    "lat": 43.075226891959,
+    "lon": -89.377555681502,
+    "image": "node_176.jpg",
+    "compass_angle": 235.27898329094
+  },
+  {
+    "id": "node_177",
+    "mapillary_id": "216076183302618",
+    "lat": 43.074867562962,
+    "lon": -89.378184570521,
+    "image": "node_177.jpg",
+    "compass_angle": 227.0404804029
+  },
+  {
+    "id": "node_178",
+    "mapillary_id": "862245104361943",
+    "lat": 43.075120727863,
+    "lon": -89.377753911671,
+    "image": "node_178.jpg",
+    "compass_angle": 230.92432353371
+  },
+  {
+    "id": "node_179",
+    "mapillary_id": "1108865229605208",
+    "lat": 43.075038492277,
+    "lon": -89.377899931665,
+    "image": "node_179.jpg",
+    "compass_angle": 232.6394065376
+  },
+  {
+    "id": "node_180",
+    "mapillary_id": "2030126497134583",
+    "lat": 43.076537004074,
+    "lon": -89.381452390587,
+    "image": "node_180.jpg",
+    "compass_angle": 44.601715270418
+  },
+  {
+    "id": "node_181",
+    "mapillary_id": "1322957419207915",
+    "lat": 43.0755501,
+    "lon": -89.3813064,
+    "image": "node_181.jpg",
+    "compass_angle": 27.926367272681
+  },
+  {
+    "id": "node_182",
+    "mapillary_id": "2275039522629944",
+    "lat": 43.07634832126,
+    "lon": -89.38171506138,
+    "image": "node_182.jpg",
+    "compass_angle": 45.399176539396
+  },
+  {
+    "id": "node_183",
+    "mapillary_id": "750336628038271",
+    "lat": 43.0755432,
+    "lon": -89.3812964,
+    "image": "node_183.jpg",
+    "compass_angle": 55.237402312396
+  },
+  {
+    "id": "node_184",
+    "mapillary_id": "2892853471034802",
+    "lat": 43.07631724212,
+    "lon": -89.38175937736,
+    "image": "node_184.jpg",
+    "compass_angle": 45.804645117525
+  },
+  {
+    "id": "node_185",
+    "mapillary_id": "2906775839641637",
+    "lat": 43.076379624241,
+    "lon": -89.381671011858,
+    "image": "node_185.jpg",
+    "compass_angle": 45.09950366737
+  },
+  {
+    "id": "node_186",
+    "mapillary_id": "301764701607633",
+    "lat": 43.076600301379,
+    "lon": -89.381365197169,
+    "image": "node_186.jpg",
+    "compass_angle": 44.866853124987
+  },
+  {
+    "id": "node_187",
+    "mapillary_id": "193020235876389",
+    "lat": 43.074897891242,
+    "lon": -89.37813931316,
+    "image": "node_187.jpg",
+    "compass_angle": 227.34542090138
+  },
+  {
+    "id": "node_188",
+    "mapillary_id": "791289663809173",
+    "lat": 43.0764838,
+    "lon": -89.3814463,
+    "image": "node_188.jpg",
+    "compass_angle": 123.56568499206
+  },
+  {
+    "id": "node_189",
+    "mapillary_id": "818040304410498",
+    "lat": 43.0750167,
+    "lon": -89.3814352,
+    "image": "node_189.jpg",
+    "compass_angle": 286.02965059521
+  },
+  {
+    "id": "node_190",
+    "mapillary_id": "847906429132074",
+    "lat": 43.074984557338,
+    "lon": -89.377998142,
+    "image": "node_190.jpg",
+    "compass_angle": 231.58541653178
+  },
+  {
+    "id": "node_191",
+    "mapillary_id": "1279799920283610",
+    "lat": 43.0749173,
+    "lon": -89.3779343,
+    "image": "node_191.jpg",
+    "compass_angle": 132.23868462945
+  },
+  {
+    "id": "node_192",
+    "mapillary_id": "1169197834745673",
+    "lat": 43.0749636,
+    "lon": -89.381519,
+    "image": "node_192.jpg",
+    "compass_angle": 309.2291291871
+  },
+  {
+    "id": "node_193",
+    "mapillary_id": "279258541901641",
+    "lat": 43.075489414063,
+    "lon": -89.381298362277,
+    "image": "node_193.jpg",
+    "compass_angle": 314.24279334747
+  },
+  {
+    "id": "node_194",
+    "mapillary_id": "1763076003853982",
+    "lat": 43.07492759054,
+    "lon": -89.378093167617,
+    "image": "node_194.jpg",
+    "compass_angle": 228.67455040967
+  },
+  {
+    "id": "node_195",
+    "mapillary_id": "2438855296581046",
+    "lat": 43.0750045,
+    "lon": -89.3778122,
+    "image": "node_195.jpg",
+    "compass_angle": 134.89228719291
+  },
+  {
+    "id": "node_196",
+    "mapillary_id": "469143271023977",
+    "lat": 43.074956533014,
+    "lon": -89.378046105421,
+    "image": "node_196.jpg",
+    "compass_angle": 230.09441451326
+  },
+  {
+    "id": "node_197",
+    "mapillary_id": "213316216958822",
+    "lat": 43.076568692737,
+    "lon": -89.381408817993,
+    "image": "node_197.jpg",
+    "compass_angle": 44.716325616487
+  },
+  {
+    "id": "node_198",
+    "mapillary_id": "1697440007545832",
+    "lat": 43.0766855,
+    "lon": -89.3762298,
+    "image": "node_198.jpg",
+    "compass_angle": 134.59167803843
+  },
+  {
+    "id": "node_199",
+    "mapillary_id": "1909660092927895",
+    "lat": 43.0748985,
+    "lon": -89.3778943,
+    "image": "node_199.jpg",
+    "compass_angle": 128.01881605816
+  }
+]
