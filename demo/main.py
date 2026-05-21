@@ -6,86 +6,148 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pygame
 
 from config import (
-    WINDOW_WIDTH, WINDOW_HEIGHT, MAP_WIDTH, CUE_WIDTH,
-    DIVIDER_COLOR, TARGET_FPS,
+    WINDOW_WIDTH, WINDOW_HEIGHT, PANEL_SECTION_W,
+    YAW_SENS, PITCH_SENS,
+    TARGET_FPS, DATA_FOLDER,
 )
 from loader import load_scene, build_graph
 from tile_map import TileMap
-from player import Player
+from viewer import StreetViewer
+from minimap import Minimap
 from cue_engine import CueEngine
-from map_view import MapView
 from cue_panel import CuePanel
-from utils import bearing_between
+
+
+class _ViewerAsPlayer:
+    """Thin adapter so CueEngine can read viewer state without knowing about it."""
+    def __init__(self):
+        self.lat           = 0.0
+        self.lon           = 0.0
+        self.heading_deg   = 0.0
+        self.elevation_deg = 0.0
+        self.speed_mps     = 0.0
+        self.dx_m          = 0.0
+        self.dy_m          = 0.0
+        self.delta_heading = 0.0
+
+    def sync(self, viewer):
+        self.lat           = viewer.current_node.lat
+        self.lon           = viewer.current_node.lon
+        self.heading_deg   = viewer.heading_deg
+        self.elevation_deg = viewer.pitch_deg
 
 
 def main() -> None:
-    folder_path = "/Users/a/GitHub/InfiniteRace-model-input-demo/mapillary_data" #input("Enter the folder path containing coordinates.json and panorama images:\n> ").strip()
+    folder_path = DATA_FOLDER
     if not os.path.isdir(folder_path):
         print(f"Error: '{folder_path}' is not a valid directory")
         sys.exit(1)
 
     print("Loading scene…")
     nodes = load_scene(folder_path)
-    build_graph(nodes)  # builds nearest-neighbor connections (used by MapView)
+    build_graph(nodes)
     print(f"  {len(nodes)} nodes loaded")
 
     center_lat = sum(n.lat for n in nodes) / len(nodes)
     center_lon = sum(n.lon for n in nodes) / len(nodes)
 
-    # Tile cache lives at project root so it survives across runs
     cache_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".tile_cache")
-    tile_map = TileMap(center_lat, center_lon, MAP_WIDTH, WINDOW_HEIGHT,
-                       cache_dir=cache_dir, nodes=nodes)
+    tile_map  = TileMap(center_lat, center_lon, WINDOW_WIDTH, WINDOW_HEIGHT,
+                        cache_dir=cache_dir, nodes=nodes)
 
-    # Update every node's screen_pos using Mercator-correct projection
-    for node in nodes:
-        node.screen_pos = tile_map.latlon_to_pane_px(node.lat, node.lon)
-
-    # Start at node 0, facing toward node 1
-    start_heading = 0.0
-    if len(nodes) >= 2:
-        start_heading = bearing_between(nodes[0].lat, nodes[0].lon, nodes[1].lat, nodes[1].lon)
-    player = Player(nodes[0].lat, nodes[0].lon, heading=start_heading)
+    total_w = WINDOW_WIDTH + PANEL_SECTION_W
 
     pygame.init()
-    screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT), flags=0)
-    pygame.display.set_caption("World Model Input Preview")
-    clock = pygame.time.Clock()
+    screen   = pygame.display.set_mode((total_w, WINDOW_HEIGHT))
+    pygame.display.set_caption("Street View")
+    clock    = pygame.time.Clock()
+    fps_font = pygame.font.SysFont("monospace", 11)
 
-    map_surface = pygame.Surface((MAP_WIDTH, WINDOW_HEIGHT))
-    cue_surface = pygame.Surface((CUE_WIDTH, WINDOW_HEIGHT))
-
-    map_view   = MapView(MAP_WIDTH, WINDOW_HEIGHT, nodes, tile_map)
-    cue_panel  = CuePanel(0, 0, CUE_WIDTH, WINDOW_HEIGHT)
+    viewer     = StreetViewer(nodes, WINDOW_WIDTH, WINDOW_HEIGHT)
+    minimap    = Minimap(tile_map, nodes)
     cue_engine = CueEngine(nodes)
+    cue_panel  = CuePanel(WINDOW_WIDTH, 0, PANEL_SECTION_W, WINDOW_HEIGHT)
+    player     = _ViewerAsPlayer()
+    gsv_surf   = screen.subsurface(pygame.Rect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT))
 
-    running = True
+    from utils import bearing_between
+    if len(nodes) >= 2:
+        viewer.heading_deg = bearing_between(
+            nodes[0].lat, nodes[0].lon, nodes[1].lat, nodes[1].lon,
+        )
 
-    while running:
-        dt = min(clock.tick(TARGET_FPS) / 1000.0, 0.05)
+    dragging   = False
+    drag_start = (0, 0)
+    drag_moved = False
+
+    while True:
+        clock.tick(TARGET_FPS)
+        mouse_pos = pygame.mouse.get_pos()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
+                pygame.quit(); return
+
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    running = False
+                    pygame.quit(); return
                 elif event.key == pygame.K_r:
-                    player.reset()
+                    viewer.heading_deg = 0.0
+                    viewer.pitch_deg   = 0.0
+                    viewer.fov_deg     = 90.0
+                    viewer._dirty      = True
 
-        keys = pygame.key.get_pressed()
-        player.update(dt, keys)
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if mouse_pos[0] < WINDOW_WIDTH:
+                    dragging   = True
+                    drag_start = event.pos
+                    drag_moved = False
+
+            elif event.type == pygame.MOUSEMOTION:
+                if dragging:
+                    dx = event.pos[0] - drag_start[0]
+                    dy = event.pos[1] - drag_start[1]
+                    if abs(dx) > 2 or abs(dy) > 2:
+                        drag_moved = True
+                    viewer.rotate(dx * YAW_SENS, -dy * PITCH_SENS)
+                    drag_start = event.pos
+
+            elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                dragging = False
+                if not drag_moved and mouse_pos[0] < WINDOW_WIDTH:
+                    node = viewer.node_at_screen(*event.pos)
+                    if node:
+                        viewer.navigate_to(node)
+
+            elif event.type == pygame.MOUSEWHEEL:
+                if mouse_pos[0] < WINDOW_WIDTH:
+                    viewer.zoom(-event.y * 5.0)
+
+        # Cue data (computed first so minimap can show anchor cones)
+        player.sync(viewer)
         cue_data = cue_engine.update(player)
+        node_map  = {n.id: n for n in nodes}
+        nearest_node = node_map.get(cue_data.nearest_node_id)
+        second_node  = node_map.get(cue_data.second_nearest_node_id)
 
-        map_view.render(map_surface, player, nodes, cue_data, clock.get_fps())
-        cue_panel.render(cue_surface, cue_data)
+        # GSV side
+        viewer.render(gsv_surf, mouse_pos)
+        minimap.render(gsv_surf, viewer.current_node, viewer.heading_deg, viewer.fov_deg,
+                       viewer.pitch_deg, nearest_node, second_node)
 
-        screen.blit(map_surface, (0, 0))
-        screen.blit(cue_surface, (MAP_WIDTH, 0))
-        pygame.draw.line(screen, DIVIDER_COLOR, (MAP_WIDTH, 0), (MAP_WIDTH, WINDOW_HEIGHT), 1)
+        # Cue panel side
+        cue_panel.render(screen, cue_data)
+
+        # Divider
+        pygame.draw.line(screen, (60, 60, 80),
+                         (WINDOW_WIDTH, 0), (WINDOW_WIDTH, WINDOW_HEIGHT), 2)
+
+        fps = clock.get_fps()
+        fps_surf = fps_font.render(f"{fps:.0f} fps", True, (160, 160, 160))
+        screen.blit(fps_surf, (WINDOW_WIDTH - fps_surf.get_width() - 10,
+                               WINDOW_HEIGHT - fps_surf.get_height() - 8))
+
         pygame.display.flip()
-
-    pygame.quit()
 
 
 if __name__ == "__main__":

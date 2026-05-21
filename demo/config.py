@@ -1,50 +1,45 @@
-WINDOW_WIDTH = 1440
-WINDOW_HEIGHT = 900
-MAP_WIDTH = 720
-CUE_WIDTH = 720
+WINDOW_WIDTH  = 1280
+WINDOW_HEIGHT = 720
 
-# Colors (R, G, B)
-BG_COLOR = (26, 26, 46)
-NODE_COLOR = (29, 158, 117)
-NODE_HIGHLIGHT_COLOR = (93, 202, 165)
-PLAYER_COLOR = (216, 90, 48)
-TRAIL_COLOR = (216, 90, 48)
-CONNECTION_COLOR = (42, 42, 74)
-HUD_COLOR = (255, 255, 255)
-LABEL_COLOR = (255, 255, 255)
-SUBLABEL_COLOR = (150, 150, 150)
-DIVIDER_COLOR = (80, 80, 80)
-PANEL_BG_COLOR = (20, 20, 35)
-PANEL_BORDER_COLOR = (60, 60, 80)
+# Cue panel section (appended to the right of the GSV viewer)
+PANEL_W         = 256
+PANEL_H         = 228
+PANEL_PADDING   = 10
+PANEL_GAP       = 8
+PANEL_SECTION_W = PANEL_PADDING + PANEL_W + PANEL_GAP + PANEL_W + PANEL_PADDING  # 540
 
-# Map drawing
-MAP_PADDING = 60
-NODE_RADIUS = 8
-NODE_HIGHLIGHT_RADIUS = 14
-PLAYER_HEIGHT = 14
-PLAYER_BASE = 10
-TRAIL_LENGTH = 60
-FOV_DEG = 90.0
-FOV_LINE_LENGTH = 80
+# Viewer
+DEFAULT_FOV  = 90.0
+MIN_FOV      = 20.0
+MAX_FOV      = 120.0
+PITCH_LIMIT  = 85.0
 
-# Cue panel grid layout
-PANEL_PADDING = 10
-PANEL_GAP = 6
-PANEL_W = (CUE_WIDTH - 2 * PANEL_PADDING - PANEL_GAP) // 2
-PANEL_H = (WINDOW_HEIGHT - 2 * PANEL_PADDING - 2 * PANEL_GAP) // 3
+# Mouse sensitivity
+YAW_SENS   = 0.20   # deg per pixel drag
+PITCH_SENS = 0.20
 
-# Physics
-TURN_RATE      = 90.0   # deg/s
-ELEVATION_RATE = 60.0   # deg/s  (arrow up / down)
-ACCELERATION = 3.0     # m/s²
-DECELERATION = 5.0     # m/s²
-MAX_SPEED = 10.0       # m/s
-FRICTION = 2.0         # m/s²
+# Navigation arrows
+MAX_NAV_NODES  = 5
+MAX_NAV_DIST_M = 80.0
+ARROW_PITCH    = -20.0   # elevation angle where nav arrows appear
+ARROW_HIT_PX   = 36      # click hit radius in pixels
+
+# Minimap overlay
+MINIMAP_SIZE   = 200
+MINIMAP_MARGIN = 14
 
 # Cue engine
-EARTH_RADIUS_M = 6_371_000
-NEAREST_CACHE_DIST_M = 0.5
-ANCHOR_CROP_SIZE = 256
-BREAKPOINT_NODE_DIST_M = 1.5
+NEAREST_CACHE_DIST_M = 5.0
+ANCHOR_CROP_SIZE     = 256
+FOV_DEG              = 90.0
 
-TARGET_FPS = 60
+# Colors
+PLAYER_COLOR = (255, 200, 50)
+
+# Data source
+DATA_FOLDER = "/Users/a/GitHub/InfiniteRace-model-input-demo/gsv_data"
+
+# Kept for loader.py compatibility
+MAP_PADDING    = 40
+EARTH_RADIUS_M = 6_371_000
+TARGET_FPS     = 60
