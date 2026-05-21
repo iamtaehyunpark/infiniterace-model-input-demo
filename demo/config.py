@@ -42,7 +42,7 @@ FOV_DEG              = 90.0
 PLAYER_COLOR = (255, 200, 50)
 
 # Data source
-DATA_FOLDER = "/Users/a/GitHub/InfiniteRace-model-input-demo/gsv_data"
+DATA_FOLDER = "/Users/a/GitHub/InfiniteRace-model-input-demo/calib_data"
 
 # Kept for loader.py compatibility
 MAP_PADDING    = 40

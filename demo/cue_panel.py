@@ -98,39 +98,76 @@ class CuePanel:
     # Panel 1 — Nearest node at intersection
     # ------------------------------------------------------------------
 
-    def _frustum_quad_in_panel(self,
-                               heading_deg: float, pitch_deg: float,
-                               crop_hdg_deg: float, elev_deg: float,
-                               rx: int, cy: int, pw: int, ph: int,
-                               color: tuple, surf) -> None:
-        """Project player's 4 frustum corners into a node panel and draw the quad outline."""
+    @staticmethod
+    def _cam_axes(hdg_deg: float, pitch_deg: float):
         import math as _m
-        H = _m.radians(heading_deg)
-        P = _m.radians(pitch_deg)
+        H = _m.radians(hdg_deg);   P = _m.radians(pitch_deg)
         ch, sh = _m.cos(H), _m.sin(H)
         cp, sp = _m.cos(P), _m.sin(P)
+        right = ( ch,       -sh,       0.0)
+        fwd   = ( sh * cp,   ch * cp,  sp)
+        up    = (-sh * sp,  -ch * sp,  cp)
+        return right, up, fwd
 
-        # World-space camera axes  (East=X, North=Y, Up=Z)
-        right = ( ch, -sh,  0.0)
-        fwd   = ( sh*cp,  ch*cp,  sp)
-        up    = (-sh*sp, -ch*sp,  cp)
+    _SCENE_DEPTH_M = 40.0   # assumed scene depth for parallax projection
+
+    def _frustum_quad_in_panel(self,
+                               heading_deg: float, pitch_deg: float,
+                               crop_hdg_deg: float, crop_elev_deg: float,
+                               node_east_m: float, node_north_m: float,
+                               rx: int, cy: int, pw: int, ph: int,
+                               color: tuple, surf) -> None:
+        """
+        For each of the 4 player screen-corner rays:
+          1. Trace from the player's position to a world point at SCENE_DEPTH_M.
+          2. Re-project that world point from the NODE's position into its panel.
+
+        This correctly accounts for the spatial offset between player and node,
+        producing an outline that matches the minimap prismatoid intersection.
+        """
+        import math as _m
+
+        p_right, p_up, p_fwd = self._cam_axes(heading_deg, pitch_deg)
+        n_right, n_up, n_fwd = self._cam_axes(crop_hdg_deg, crop_elev_deg)
 
         tan_h = _m.tan(_m.radians(FOV_DEG / 2.0))
         tan_v = _m.tan(_m.radians(FOV_DEG / 2.0) * WINDOW_HEIGHT / WINDOW_WIDTH)
+        tan_n = _m.tan(_m.radians(FOV_DEG / 2.0))
 
         pts = []
         for ccx, ccy in [(-tan_h, -tan_v), (tan_h, -tan_v),
                           (tan_h,  tan_v), (-tan_h,  tan_v)]:
-            wx = ccx*right[0] + ccy*up[0] + fwd[0]
-            wy = ccx*right[1] + ccy*up[1] + fwd[1]
-            wz = ccx*right[2] + ccy*up[2] + fwd[2]
+            # Player frustum corner ray direction
+            wx = ccx * p_right[0] + ccy * p_up[0] + p_fwd[0]
+            wy = ccx * p_right[1] + ccy * p_up[1] + p_fwd[1]
+            wz = ccx * p_right[2] + ccy * p_up[2] + p_fwd[2]
 
-            world_az = _m.degrees(_m.atan2(wx, wy))       # compass: N=0, E=90
-            world_el = _m.degrees(_m.atan2(wz, _m.sqrt(wx*wx + wy*wy)))
+            # Forward component along player's look direction (for depth scaling)
+            fwd_comp = wx * p_fwd[0] + wy * p_fwd[1] + wz * p_fwd[2]
+            if fwd_comp <= 1e-6:
+                return
 
-            az_rel = (world_az - crop_hdg_deg + 180.0) % 360.0 - 180.0
-            px = int((az_rel + 45.0) / 90.0 * pw)
-            py = int((elev_deg + 45.0 - world_el) / 90.0 * ph)
+            # Trace ray to scene depth — world offset from player (East, North, Up)
+            t = self._SCENE_DEPTH_M / fwd_comp
+            world_x = wx * t   # East
+            world_y = wy * t   # North
+            world_z = wz * t   # Up
+
+            # Vector from NODE to that world point
+            rel_x = world_x - node_east_m
+            rel_y = world_y - node_north_m
+            rel_z = world_z  # node at same height as player
+
+            # Project into node's camera
+            cam_x = rel_x * n_right[0] + rel_y * n_right[1] + rel_z * n_right[2]
+            cam_y = rel_x * n_up[0]    + rel_y * n_up[1]    + rel_z * n_up[2]
+            cam_z = rel_x * n_fwd[0]   + rel_y * n_fwd[1]   + rel_z * n_fwd[2]
+
+            if cam_z <= 1e-6:
+                return
+
+            px = int(( cam_x / cam_z / tan_n * 0.5 + 0.5) * pw)
+            py = int((-cam_y / cam_z / tan_n * 0.5 + 0.5) * ph)
             pts.append((rx + px, cy + py))
 
         pygame.draw.polygon(surf, color, pts, 2)
@@ -146,6 +183,7 @@ class CuePanel:
         self._blit_image(surf, crop, rx + 2, cy, iw, ih)
         self._frustum_quad_in_panel(cd.heading_deg, cd.elevation_deg,
                                     cd.nearest_crop_hdg, cd.elevation_deg,
+                                    cd.nearest_east_m, cd.nearest_north_m,
                                     rx + 2, cy, iw, ih, (255, 200, 50), surf)
         self._tag(surf, f"{cd.nearest_node_dist_m:.1f} m", rx + 2, cy, iw, ih)
 
@@ -164,6 +202,7 @@ class CuePanel:
         self._blit_image(surf, crop, rx + 2, cy, iw, ih)
         self._frustum_quad_in_panel(cd.heading_deg, cd.elevation_deg,
                                     cd.second_crop_hdg, cd.elevation_deg,
+                                    cd.second_east_m, cd.second_north_m,
                                     rx + 2, cy, iw, ih, (60, 200, 140), surf)
 
     # ------------------------------------------------------------------
@@ -181,6 +220,7 @@ class CuePanel:
         self._blit_image(surf, crop, rx + 2, cy, iw, ih)
         self._frustum_quad_in_panel(cd.heading_deg, cd.elevation_deg,
                                     cd.third_crop_hdg, cd.elevation_deg,
+                                    cd.third_east_m, cd.third_north_m,
                                     rx + 2, cy, iw, ih, (60, 140, 220), surf)
 
     # ------------------------------------------------------------------
