@@ -9,8 +9,9 @@ import pygame
 from config import (
     WINDOW_WIDTH, WINDOW_HEIGHT, PANEL_SECTION_W,
     YAW_SENS, PITCH_SENS, PITCH_LIMIT,
-    TURN_RATE, ELEVATION_RATE, MOVE_SPEED,
+    ELEVATION_RATE, MOVE_SPEED,
     EARTH_RADIUS_M, TARGET_FPS, DATA_FOLDER,
+    MAX_STEER_DEG, FOV_DEG,
 )
 from loader import load_scene, build_graph
 from tile_map import TileMap
@@ -32,6 +33,7 @@ class _Player:
         self.dx_m          = 0.0
         self.dy_m          = 0.0
         self.delta_heading = 0.0
+        self.steer         = 0.0   # normalized –1 to 1 (Cue 3)
         self._prev_heading = 0.0
 
     def update(self, dt: float, keys, viewer) -> None:
@@ -73,6 +75,7 @@ class _Player:
         self.heading_deg   = viewer.heading_deg
         self.elevation_deg = viewer.pitch_deg
         self.delta_heading = (self.heading_deg - self._prev_heading + 180.0) % 360.0 - 180.0
+        self.steer         = max(-1.0, min(1.0, self.delta_heading / MAX_STEER_DEG))
         self._prev_heading = self.heading_deg
 
 
@@ -173,15 +176,16 @@ def main() -> None:
             viewer.set_node(nearest)
 
         # Cue data
-        cue_data     = cue_engine.update(player)
-        node_map     = {n.id: n for n in nodes}
-        nearest_node = node_map.get(cue_data.nearest_node_id)
-        second_node  = node_map.get(cue_data.second_nearest_node_id)
-        third_node   = node_map.get(cue_data.third_nearest_node_id)
+        cue_data  = cue_engine.update(player)
+        node_map  = {n.id: n for n in nodes}
+        n1 = node_map.get(cue_data.nearest_node_id)
+        n2 = node_map.get(cue_data.second_node_id)
+        n3 = node_map.get(cue_data.third_node_id)
+        # Anchors for minimap prismatoids — all share player heading (anchor crops are at player direction)
         anchors = [
-            (nearest_node, cue_data.nearest_crop_hdg, cue_data.nearest_crop_fov),
-            (second_node,  cue_data.second_crop_hdg,  cue_data.second_crop_fov),
-            (third_node,   cue_data.third_crop_hdg,   cue_data.third_crop_fov),
+            (n1, player.heading_deg, FOV_DEG),
+            (n2, player.heading_deg, FOV_DEG),
+            (n3, player.heading_deg, FOV_DEG),
         ]
 
         # GSV side
@@ -203,6 +207,7 @@ def main() -> None:
                                WINDOW_HEIGHT - fps_surf.get_height() - 8))
 
         pygame.display.flip()
+
 
 
 if __name__ == "__main__":

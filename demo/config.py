@@ -37,12 +37,15 @@ MINIMAP_MARGIN = 14
 NEAREST_CACHE_DIST_M = 5.0
 ANCHOR_CROP_SIZE     = 256
 FOV_DEG              = 90.0
+LOOKAHEAD_TIME_S     = 0.5    # seconds ahead for interpolation grounding crop
+LOOKAHEAD_FOV_DEG    = 120.0  # wider FOV for look-ahead crop
+MAX_STEER_DEG        = 10.0   # delta_heading (deg/frame) that maps to steer = ±1
 
 # Colors
 PLAYER_COLOR = (255, 200, 50)
 
 # Data source
-DATA_FOLDER = "/Users/a/GitHub/InfiniteRace-model-input-demo/calib_data"
+DATA_FOLDER = "/Users/a/GitHub/InfiniteRace-model-input-demo/gsv_data"
 
 # Kept for loader.py compatibility
 MAP_PADDING    = 40
