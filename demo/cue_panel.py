@@ -6,6 +6,7 @@ import pygame
 from config import (
     PLAYER_COLOR,
     PANEL_PADDING, PANEL_GAP, PANEL_W, PANEL_H,
+    FOV_DEG, WINDOW_WIDTH, WINDOW_HEIGHT,
 )
 
 _HEADER_H   = 22   # px reserved for panel title
@@ -97,8 +98,45 @@ class CuePanel:
     # Panel 1 — Nearest node at intersection
     # ------------------------------------------------------------------
 
+    def _frustum_quad_in_panel(self,
+                               heading_deg: float, pitch_deg: float,
+                               crop_hdg_deg: float, elev_deg: float,
+                               rx: int, cy: int, pw: int, ph: int,
+                               color: tuple, surf) -> None:
+        """Project player's 4 frustum corners into a node panel and draw the quad outline."""
+        import math as _m
+        H = _m.radians(heading_deg)
+        P = _m.radians(pitch_deg)
+        ch, sh = _m.cos(H), _m.sin(H)
+        cp, sp = _m.cos(P), _m.sin(P)
+
+        # World-space camera axes  (East=X, North=Y, Up=Z)
+        right = ( ch, -sh,  0.0)
+        fwd   = ( sh*cp,  ch*cp,  sp)
+        up    = (-sh*sp, -ch*sp,  cp)
+
+        tan_h = _m.tan(_m.radians(FOV_DEG / 2.0))
+        tan_v = _m.tan(_m.radians(FOV_DEG / 2.0) * WINDOW_HEIGHT / WINDOW_WIDTH)
+
+        pts = []
+        for ccx, ccy in [(-tan_h, -tan_v), (tan_h, -tan_v),
+                          (tan_h,  tan_v), (-tan_h,  tan_v)]:
+            wx = ccx*right[0] + ccy*up[0] + fwd[0]
+            wy = ccx*right[1] + ccy*up[1] + fwd[1]
+            wz = ccx*right[2] + ccy*up[2] + fwd[2]
+
+            world_az = _m.degrees(_m.atan2(wx, wy))       # compass: N=0, E=90
+            world_el = _m.degrees(_m.atan2(wz, _m.sqrt(wx*wx + wy*wy)))
+
+            az_rel = (world_az - crop_hdg_deg + 180.0) % 360.0 - 180.0
+            px = int((az_rel + 45.0) / 90.0 * pw)
+            py = int((elev_deg + 45.0 - world_el) / 90.0 * ph)
+            pts.append((rx + px, cy + py))
+
+        pygame.draw.polygon(surf, color, pts, 2)
+
     def _panel1(self, surf, rx, ry, cd) -> None:
-        cy = self._header(surf, rx, ry, f"Nearest  ·  {cd.nearest_node_id}  ·  heading crop")
+        cy = self._header(surf, rx, ry, f"Nearest  ·  {cd.nearest_node_id}  ·  {cd.nearest_crop_fov:.0f}°")
         crop = cd.nearest_crop_isect
         iw = PANEL_W - 4
         ih = ry + PANEL_H - cy - 2
@@ -106,6 +144,9 @@ class CuePanel:
             self._no_data(surf, rx, ry + _HEADER_H)
             return
         self._blit_image(surf, crop, rx + 2, cy, iw, ih)
+        self._frustum_quad_in_panel(cd.heading_deg, cd.elevation_deg,
+                                    cd.nearest_crop_hdg, cd.elevation_deg,
+                                    rx + 2, cy, iw, ih, (255, 200, 50), surf)
         self._tag(surf, f"{cd.nearest_node_dist_m:.1f} m", rx + 2, cy, iw, ih)
 
     # ------------------------------------------------------------------
@@ -113,7 +154,7 @@ class CuePanel:
     # ------------------------------------------------------------------
 
     def _panel2(self, surf, rx, ry, cd) -> None:
-        cy = self._header(surf, rx, ry, f"2nd nearest  ·  {cd.second_nearest_node_id}  ·  heading crop")
+        cy = self._header(surf, rx, ry, f"2nd nearest  ·  {cd.second_nearest_node_id}  ·  {cd.second_crop_fov:.0f}°")
         crop = cd.second_crop_isect
         iw = PANEL_W - 4
         ih = ry + PANEL_H - cy - 2
@@ -121,20 +162,26 @@ class CuePanel:
             self._no_data(surf, rx, ry + _HEADER_H)
             return
         self._blit_image(surf, crop, rx + 2, cy, iw, ih)
+        self._frustum_quad_in_panel(cd.heading_deg, cd.elevation_deg,
+                                    cd.second_crop_hdg, cd.elevation_deg,
+                                    rx + 2, cy, iw, ih, (60, 200, 140), surf)
 
     # ------------------------------------------------------------------
-    # Panel 3 — Second nearest context (unfiltered, full heading)
+    # Panel 3 — Third nearest node at intersection
     # ------------------------------------------------------------------
 
     def _panel3(self, surf, rx, ry, cd) -> None:
-        cy = self._header(surf, rx, ry, f"2nd nearest  ·  {cd.second_nearest_node_id}  ·  full heading")
-        crop = cd.second_nearest_crop
+        cy = self._header(surf, rx, ry, f"3rd nearest  ·  {cd.third_nearest_node_id}  ·  {cd.third_crop_fov:.0f}°")
+        crop = cd.third_crop_isect
         iw = PANEL_W - 4
         ih = ry + PANEL_H - cy - 2
         if crop is None or crop.size == 0:
             self._no_data(surf, rx, ry + _HEADER_H)
             return
         self._blit_image(surf, crop, rx + 2, cy, iw, ih)
+        self._frustum_quad_in_panel(cd.heading_deg, cd.elevation_deg,
+                                    cd.third_crop_hdg, cd.elevation_deg,
+                                    rx + 2, cy, iw, ih, (60, 140, 220), surf)
 
     # ------------------------------------------------------------------
     # Panel 4 — Movement / compass

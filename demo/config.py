@@ -18,6 +18,11 @@ PITCH_LIMIT  = 85.0
 YAW_SENS   = 0.20   # deg per pixel drag
 PITCH_SENS = 0.20
 
+# WASD movement
+TURN_RATE      = 90.0   # deg/s  (A/D)
+ELEVATION_RATE = 60.0   # deg/s  (UP/DOWN arrows)
+MOVE_SPEED     = 3.0    # m/s    (W/S)
+
 # Navigation arrows
 MAX_NAV_NODES  = 5
 MAX_NAV_DIST_M = 80.0

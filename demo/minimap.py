@@ -85,9 +85,11 @@ class Minimap:
     # Public render
     # ------------------------------------------------------------------
 
-    def render(self, surface: pygame.Surface, current_node,
+    def render(self, surface: pygame.Surface,
+               player_lat: float, player_lon: float, current_node,
                heading_deg: float, fov_deg: float = 90.0, pitch_deg: float = 0.0,
-               nearest_node=None, second_node=None) -> None:
+               anchors: list = None) -> None:
+        """anchors: list of (node, crop_heading_deg, crop_fov_deg) tuples."""
         S = self._SIZE
         W, H = surface.get_size()
         x0 = W - S - self._MARGIN
@@ -96,24 +98,28 @@ class Minimap:
         mini = pygame.Surface((S, S))
         mini.fill((35, 35, 45))
 
-        # ── Tile background ───────────────────────────────────────────
+        # All positions are relative to the player's tile pixel (minimap centers on player)
         if self.tile_map.available:
-            cpx, cpy = self.tile_map.latlon_to_pane_px(current_node.lat, current_node.lon)
+            ppx, ppy = self.tile_map.latlon_to_pane_px(player_lat, player_lon)
+        else:
+            ppx, ppy = 0, 0
+
+        # ── Tile background (centred on player) ───────────────────────
+        if self.tile_map.available:
             half = S // 2
             tw, th = self.tile_map.surface.get_size()
-            src_x = max(0, min(tw - S, cpx - half))
-            src_y = max(0, min(th - S, cpy - half))
-            dst_x = max(0, half - cpx)
-            dst_y = max(0, half - cpy)
+            src_x = max(0, min(tw - S, ppx - half))
+            src_y = max(0, min(th - S, ppy - half))
+            dst_x = max(0, half - ppx)
+            dst_y = max(0, half - ppy)
             mini.blit(self.tile_map.surface, (dst_x, dst_y), pygame.Rect(src_x, src_y, S, S))
 
         # ── Node dots ─────────────────────────────────────────────────
         if self.tile_map.available:
-            cpx, cpy = self.tile_map.latlon_to_pane_px(current_node.lat, current_node.lon)
             for node in self.all_nodes:
                 nx, ny = self.tile_map.latlon_to_pane_px(node.lat, node.lon)
-                mx = S // 2 + (nx - cpx)
-                my = S // 2 + (ny - cpy)
+                mx = S // 2 + (nx - ppx)
+                my = S // 2 + (ny - ppy)
                 if 0 <= mx < S and 0 <= my < S:
                     col = (60, 200, 140) if node is current_node else (80, 120, 210)
                     r   = 5 if node is current_node else 3
@@ -132,22 +138,25 @@ class Minimap:
                     r   = 5 if node is current_node else 2
                     pygame.draw.circle(mini, col, (mx, my), r)
 
-        cx, cy   = S // 2, S // 2
-        vh       = self._virtual_h(fov_deg)
+        cx, cy = S // 2, S // 2
+        vh     = self._virtual_h(fov_deg)
 
-        # ── Anchor prismatoid cones (pitch=0 — ground-level cameras) ──
-        if self.tile_map.available:
-            cpx, cpy = self.tile_map.latlon_to_pane_px(current_node.lat, current_node.lon)
-            for anchor, fill, line, near in (
-                (nearest_node, (60, 200, 140, 30), (60, 200, 140, 150), (60, 200, 140, 100)),
-                (second_node,  (60, 140, 220, 30), (60, 140, 220, 150), (60, 140, 220, 100)),
-            ):
+        # ── Anchor 3D prismatoid cones (pitch=0 — ground-level cameras) ──
+        _anchor_styles = [
+            ((60, 200, 140, 30), (60, 200, 140, 150), (60, 200, 140, 100)),
+            ((60, 140, 220, 30), (60, 140, 220, 150), (60, 140, 220, 100)),
+            ((200, 80, 220, 30), (200, 80, 220, 150), (200, 80, 220, 100)),
+        ]
+        if self.tile_map.available and anchors:
+            for i, (anchor, anchor_hdg, anchor_fov) in enumerate(anchors):
                 if anchor is None:
                     continue
+                fill, line, near = _anchor_styles[i % len(_anchor_styles)]
                 nx, ny = self.tile_map.latlon_to_pane_px(anchor.lat, anchor.lon)
-                ax = S // 2 + (nx - cpx)
-                ay = S // 2 + (ny - cpy)
-                self._draw_prismatoid(mini, ax, ay, heading_deg, 0.0, fov_deg, vh,
+                ax = S // 2 + (nx - ppx)
+                ay = S // 2 + (ny - ppy)
+                avh = self._virtual_h(anchor_fov)
+                self._draw_prismatoid(mini, ax, ay, heading_deg, pitch_deg, anchor_fov, avh,
                                       fill, line, near)
 
         # ── Player 3D frustum ground footprint ────────────────────────

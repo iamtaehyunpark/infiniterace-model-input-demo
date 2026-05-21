@@ -21,7 +21,11 @@ class CueData:
     # Panel 2 — POV direction
     azimuth_deg: float
     elevation_deg: float
-    # Panel 3 — second nearest anchor toward heading
+    # Panel 3 — third nearest anchor intersection
+    third_crop_isect: Optional[np.ndarray]      # 256×256 BGR
+    third_crop_fov: float
+    third_nearest_node_id: str
+    # (kept for legacy — second nearest full heading)
     second_nearest_crop: Optional[np.ndarray]   # 256×256 BGR
     second_nearest_node_id: str
     # Panel 0 — merged crop (main world-model input)
@@ -34,9 +38,15 @@ class CueData:
     residual: Optional[np.ndarray]              # 256×256 grayscale→BGR
     max_delta: float
     mean_delta: float
-    # Panel 1 & 2 — individual node crops at player heading
+    # Panel 1 / 2 / 3 — individual node crops at player heading
     nearest_crop_isect: Optional[np.ndarray]    # 256×256 BGR
     second_crop_isect: Optional[np.ndarray]     # 256×256 BGR
+    nearest_crop_fov: float                     # angular width of nearest intersection (deg)
+    second_crop_fov: float                      # angular width of second intersection (deg)
+    # Headings from each anchor toward the look-ahead reference point
+    nearest_crop_hdg: float
+    second_crop_hdg: float
+    third_crop_hdg: float
     # Extra info for map drawing
     bear_to_nearest: float
     bear_to_second: float
@@ -73,6 +83,10 @@ class CueEngine:
         self._refresh_cache(lat, lon)
         return self._cache_sorted[1] if len(self._cache_sorted) >= 2 else self._cache_sorted[0]
 
+    def _third_nearest(self, lat, lon):
+        self._refresh_cache(lat, lon)
+        return self._cache_sorted[2] if len(self._cache_sorted) >= 3 else self._cache_sorted[-1]
+
     # ------------------------------------------------------------------
     # Panorama cropping
     # ------------------------------------------------------------------
@@ -80,42 +94,37 @@ class CueEngine:
     def _crop_at_heading(self, img: np.ndarray, heading_deg: float,
                          compass_angle: float = 0.0, elevation_deg: float = 0.0,
                          fov: float = FOV_DEG) -> np.ndarray:
-        """
-        Extract a crop from an equirectangular panorama.
+        """Rectilinear perspective crop from an equirectangular panorama (square output)."""
+        S = ANCHOR_CROP_SIZE
+        PH, PW = img.shape[:2]
 
-        Horizontal: column 0 = camera forward (compass_angle); columns increase clockwise.
-        Vertical:   row 0 = zenith (+90°), row H = nadir (-90°), row H/2 = horizon.
-                    elevation_deg shifts the vertical centre of the crop.
-        """
-        H, W = img.shape[:2]
-        ppd = W / 360.0
+        hr = math.radians(heading_deg)
+        pr = math.radians(elevation_deg)
+        ch, sh = math.cos(hr), math.sin(hr)
+        cp, sp = math.cos(pr), math.sin(pr)
 
-        # ── Horizontal ────────────────────────────────────────────────
-        adjusted  = (heading_deg - compass_angle + 180.0) % 360.0
-        center_px = int(adjusted * ppd) % W
-        half_px   = int((fov / 2.0) * ppd)
-        cs = (center_px - half_px) % W
-        ce = (center_px + half_px) % W
+        right   = np.array([ ch,      -sh,       0.0], dtype=np.float32)
+        fwd     = np.array([ sh * cp,  ch * cp,  sp ], dtype=np.float32)
+        up      = np.array([-sh * sp, -ch * sp,  cp ], dtype=np.float32)
 
-        # ── Vertical: shift by elevation ──────────────────────────────
-        # Row for elevation E: H * (0.5 - E / 180)   (±90° spans full H)
-        r_center = H * (0.5 - elevation_deg / 180.0)
-        half_h   = H * 0.25                           # ±45° of vertical range
-        r0 = max(0, int(r_center - half_h))
-        r1 = min(H, int(r_center + half_h))
-        if r1 <= r0:
-            r0, r1 = int(H * 0.25), int(H * 0.75)
+        tan_h = math.tan(math.radians(fov / 2.0))
+        xs = np.linspace(-tan_h,  tan_h, S, dtype=np.float32)
+        ys = np.linspace( tan_h, -tan_h, S, dtype=np.float32)
+        cx, cy = np.meshgrid(xs, ys)
 
-        if cs < ce:
-            strip = img[r0:r1, cs:ce]
-        else:
-            strip = np.concatenate([img[r0:r1, cs:], img[r0:r1, :ce]], axis=1)
+        wx = cx * right[0] + cy * up[0] + fwd[0]
+        wy = cx * right[1] + cy * up[1] + fwd[1]
+        wz = cx * right[2] + cy * up[2] + fwd[2]
 
-        if strip.size == 0:
-            strip = img[r0:r1, :]
+        azimuth   = np.arctan2(wx.astype(np.float64), wy.astype(np.float64))
+        elevation = np.arctan2(wz.astype(np.float64),
+                               np.sqrt(wx.astype(np.float64)**2 + wy.astype(np.float64)**2))
 
-        return cv2.resize(strip, (ANCHOR_CROP_SIZE, ANCHOR_CROP_SIZE),
-                          interpolation=cv2.INTER_LINEAR)
+        c_off = math.radians(compass_angle + 180.0)
+        map_x = (((azimuth - c_off) / (2.0 * math.pi)) % 1.0 * PW).astype(np.float32)
+        map_y = ((0.5 - elevation / math.pi) * PH).astype(np.float32)
+
+        return cv2.remap(img, map_x, map_y, cv2.INTER_LINEAR, borderMode=cv2.BORDER_WRAP)
 
     def _blend(self, a: np.ndarray, w_a: float, b: np.ndarray, w_b: float) -> np.ndarray:
         return np.clip(a.astype(np.float32) * w_a + b.astype(np.float32) * w_b, 0, 255).astype(np.uint8)
@@ -131,6 +140,7 @@ class CueEngine:
 
         dist_near, nearest = self._nearest(lat, lon)
         dist_2nd,  second  = self._second_nearest(lat, lon)
+        dist_3rd,  third   = self._third_nearest(lat, lon)
 
         # Bearings player→anchor (for map display and blend weight)
         bear_to_n1 = bearing_between(lat, lon, nearest.lat, nearest.lon)
@@ -170,8 +180,16 @@ class CueEngine:
         n2_diff_right = abs((n2_right_hdg - n2_crop_hdg + 180.0) % 360.0 - 180.0)
         n2_fov = max(10.0, min(170.0, n2_diff_left + n2_diff_right))
 
-        crop_n1 = self._crop_at_heading(nearest.image_bgr, n1_crop_hdg, nearest.compass_angle, elevation, fov=n1_fov)
-        crop_n2 = self._crop_at_heading(second.image_bgr,  n2_crop_hdg, second.compass_angle,  elevation, fov=n2_fov)
+        n3_crop_hdg  = bearing_between(third.lat, third.lon, ref_lat, ref_lon)
+        n3_left_hdg  = bearing_between(third.lat, third.lon, ref_left_lat, ref_left_lon)
+        n3_right_hdg = bearing_between(third.lat, third.lon, ref_right_lat, ref_right_lon)
+        n3_diff_left  = abs((n3_left_hdg  - n3_crop_hdg + 180.0) % 360.0 - 180.0)
+        n3_diff_right = abs((n3_right_hdg - n3_crop_hdg + 180.0) % 360.0 - 180.0)
+        n3_fov = max(10.0, min(170.0, n3_diff_left + n3_diff_right))
+
+        crop_n1 = self._crop_at_heading(nearest.image_bgr, n1_crop_hdg, nearest.compass_angle, elevation, fov=FOV_DEG)
+        crop_n2 = self._crop_at_heading(second.image_bgr,  n2_crop_hdg, second.compass_angle,  elevation, fov=FOV_DEG)
+        crop_n3 = self._crop_at_heading(third.image_bgr,   n3_crop_hdg, third.compass_angle,   elevation, fov=FOV_DEG)
 
         # Merged: blend whichever crops exist, weighted by inverse distance
         total  = dist_near + dist_2nd
@@ -229,6 +247,14 @@ class CueEngine:
             mean_delta=mean_delta,
             nearest_crop_isect=crop_n1,
             second_crop_isect=crop_n2,
+            nearest_crop_fov=n1_fov,
+            second_crop_fov=n2_fov,
+            nearest_crop_hdg=n1_crop_hdg,
+            second_crop_hdg=n2_crop_hdg,
+            third_crop_hdg=n3_crop_hdg,
+            third_crop_isect=crop_n3,
+            third_crop_fov=n3_fov,
+            third_nearest_node_id=third.id,
             bear_to_nearest=bear_to_n1,
             bear_to_second=bear_to_n2,
         )
